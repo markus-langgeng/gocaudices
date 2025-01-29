@@ -1,5 +1,6 @@
 /* See LICENSE file for copyright and license details. */
 #include <stdio.h>
+#include <stdlib.h>
 #include <string.h>
 
 #include "../slstatus.h"
@@ -75,6 +76,37 @@
 
 		return (i == LEN(map)) ? "?" : map[i].symbol;
 	}
+
+    const char *
+    battery_icon(const char *bat)
+    {
+        char *icon, *endptr;
+        int i, perc = (int)strtol(battery_perc(bat), &endptr, 10);
+		static struct {
+			int val;
+			char *regular;
+			char *charging;
+		} baticons[] = {
+			{ 0,   "󰁺", "󰢜" },
+			{ 20,  "󰁻", "󰂆" },
+			{ 30,  "󰁼", "󰂇" },
+			{ 40,  "󰁽", "󰂈" },
+			{ 50,  "󰁾", "󰢝" },
+			{ 60,  "󰁿", "󰂉" },
+			{ 70,  "󰂀", "󰢞" },
+			{ 80,  "󰂁", "󰂊" },
+			{ 90,  "󰂂", "󰂋" },
+			{ 100, "󰁹", "󰂅" },
+		};
+
+        for (i=0; i < (int)LEN(baticons)-1 && perc >= baticons[i].val; i++) {
+            if (!strcmp(battery_state(bat), "+"))
+                icon = baticons[i].charging;
+            else
+                icon = baticons[i].regular;
+        }
+        return icon;
+    }
 
 	const char *
 	battery_remaining(const char *bat)

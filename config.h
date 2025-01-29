@@ -70,14 +70,15 @@ static const struct arg args[] = {
 
     { run_command,       "%s",          "wcast stat" },
 
-    { battery_perc,      "BAT0:%s%%",   "BAT0" },
-    { battery_state,     "%s ",         "BAT0" },
-    { battery_perc,      "BAT1:%s%%",   "BAT1" },
-    { battery_state,     "%s | ",       "BAT1" },
+    { battery_perc,      "%s%%",        "BAT0" },
+    { battery_icon,      "%s ",         "BAT0" },
+    { battery_perc,      "%s%%",        "BAT1" },
+    { battery_icon,      "%s │ ",       "BAT1" },
 
-    { wifi_perc,         " %s%% | ",   "wlan0" },
-    { alsa_master_vol,   "%s | ",       NULL },
-    { ram_used,          " %s | ",     NULL },
+    { wifi_perc,         " %s%% │ ",   "wlan0" },
+    { alsa_master_vol,   "%s │ ",       NULL },
+    { ram_used,          " %s ",       NULL },
+    { cpu_perc,          " %s%% │ ",   NULL },
     { day_cn,            "%s ",         NULL },
     { datetime,          "%s",          "%Y年%m月%d日 %H:%M" },
  };
