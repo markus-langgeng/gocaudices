@@ -100,7 +100,7 @@
 			{ 100, "󰁹", "󰂅" },
 		};
 
-        for (i=0; i < (int)LEN(baticons)-1 && perc >= baticons[i].val; i++) {
+        for (i=0; i < (int)LEN(baticons) && perc >= baticons[i].val; i++) {
             if (!strcmp(battery_state(bat), "+"))
                 icon = baticons[i].charging;
             else
