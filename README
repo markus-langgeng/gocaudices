@@ -8,7 +8,7 @@ only issuing the minimum of system calls required.
 
 Features
 --------
-- Battery percentage/state/time left
+- Battery percentage/state/time left/icon
 - Cat (read file)
 - CPU usage
 - CPU frequency
